@@ -49,7 +49,13 @@
       <span class="meta-pill">无广告</span>
       <span class="meta-pill">Android 7.0+</span>
     </div>
-  </section>
+      <div class="qq-banner">
+      <span class="qq-icon">🐧</span>
+      <span class="qq-text">官方交流群</span>
+      <span class="qq-num">1129432998</span>
+      <button class="qq-copy" data-qq="1129432998">复制群号</button>
+    </div>
+</section>
 
   <!-- 版本选择 -->
   <section class="wrap pick" id="download">
@@ -116,7 +122,7 @@
   <section class="section" id="promo">
     <div class="wrap">
       <div class="section-head center">
-        <span class="section-num">介绍视频</span>
+        <span class="section-num">宣传片</span>
         <h2>36 秒，先看一遍。</h2>
         <p>手机版、电视版的真实界面，以及多线路、分类筛选、直播功能。</p>
       </div>
@@ -274,7 +280,9 @@
       应用不提供、不存储、不传播任何影视内容，所有资源均来自第三方公开接口<br>
       请于下载后 24 小时内删除，支持正版
     </p>
-  </div>
+      <p class="footer-qq">
+        🐧 官方交流群：<strong>1129432998</strong>
+      </p>  </div>
 </footer>
 
 <!-- 下载免责声明弹窗 -->
@@ -305,6 +313,13 @@
     </div>
   </div>
 </div>
+<!-- QQ 群悬浮按钮 -->
+<button class="qq-float" data-qq="1129432998" title="复制 QQ 群号">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.003 2c-4.418 0-8 3.582-8 8 0 1.106.225 2.161.632 3.123-.518 1.375-1.363 2.85-1.363 3.877 0 .32.14.607.375.807.06.052 1.485.966 3.09-.098.61.135 1.243.208 1.894.208h.001c.65 0 1.283-.073 1.893-.208 1.605 1.064 3.03.15 3.09.098.235-.2.375-.487.375-.807 0-1.027-.845-2.502-1.363-3.877.407-.962.632-2.017.632-3.123 0-4.418-3.581-8-8-8z"/></svg>
+  <span>QQ 群</span>
+  <span class="qq-float-num">1129432998</span>
+</button>
+<div class="qq-toast" id="qqToast">群号已复制</div>
 <div class="lightbox" id="lightbox"><img id="lightbox-img" alt=""></div>
 <script>
 document.querySelectorAll('img[data-zoom]').forEach(function (img) {
@@ -372,6 +387,56 @@ document.getElementById('lightbox').addEventListener('click', function () {
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && modal.classList.contains('on')) closeModal();
+  });
+})();
+</script>
+<script>
+(function () {
+  function toast(msg) {
+    var t = document.getElementById('qqToast');
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add('on');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function () { t.classList.remove('on'); }, 1800);
+  }
+
+  function copyText(text, cb) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () { cb(true); }, function () { cb(false); });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      cb(ok);
+    }
+  }
+
+  document.querySelectorAll('[data-qq]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var qq = el.getAttribute('data-qq');
+      copyText(qq, function (ok) {
+        if (ok) {
+          toast('群号已复制：' + qq);
+          if (el.classList.contains('qq-copy')) {
+            var old = el.textContent;
+            el.textContent = '已复制';
+            el.classList.add('done');
+            setTimeout(function () {
+              el.textContent = old;
+              el.classList.remove('done');
+            }, 1600);
+          }
+        } else {
+          toast('群号：' + qq + '（请手动复制）');
+        }
+      });
+    });
   });
 })();
 </script>
