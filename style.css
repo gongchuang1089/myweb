@@ -1033,3 +1033,72 @@ a { color: var(--primary); text-decoration: none; }
     .qq-banner .qq-num { font-size: 17px; }
     .qq-float { right: 14px; bottom: 14px; padding: 10px 15px; font-size: 13px; }
 }
+/* 群号作为链接 */
+a.qq-num.qq-link {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 2px solid rgba(37, 99, 235, .28);
+    transition: .16s;
+    cursor: pointer;
+}
+
+a.qq-num.qq-link:hover {
+    color: var(--primary-hover);
+    border-bottom-color: var(--primary);
+}
+
+/* 悬浮按钮组 */
+.qq-float-group {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 900;
+    display: flex;
+    align-items: stretch;
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: 0 8px 26px rgba(37, 99, 235, .38);
+    transition: .2s;
+}
+
+.qq-float-group:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(37, 99, 235, .48);
+}
+
+.qq-float-group .qq-float {
+    position: static;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+}
+
+.qq-float-group .qq-float:hover {
+    transform: none;
+    box-shadow: none;
+    background: var(--primary-hover);
+}
+
+.qq-float-copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    background: rgba(37, 99, 235, .82);
+    color: #fff;
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, .22);
+    cursor: pointer;
+    font-size: 16px;
+    transition: .16s;
+    font-family: inherit;
+    padding: 0;
+}
+
+.qq-float-copy:hover { background: var(--primary-hover); }
+.qq-float-copy.done { background: var(--green); }
+
+@media (max-width: 640px) {
+    .qq-float-group { right: 14px; bottom: 14px; }
+    .qq-float-copy { width: 40px; font-size: 15px; }
+}
