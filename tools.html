@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>网络工具 · IP 查询 / DNS 解析 / 网站测速</title>
+<meta name="description" content="在线网络工具：查询本机出口 IP 与归属地、DNS 记录解析、网站访问耗时测试。">
+<link rel="icon" href="assets/icon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <img class="nav-logo" src="assets/icon.png" alt="共创影视">
+    <span class="nav-title">共创影视 · 网络工具</span>
+    <span class="nav-spacer"></span>
+    <a class="nav-link" href="/">首页</a>
+    <a class="nav-link" href="/phone">手机版</a>
+    <a class="nav-link" href="/tv">电视版</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section class="hero" style="padding:56px 0 36px;">
+    <span class="hero-eyebrow">NETWORK TOOLS</span>
+    <h1>网络小工具</h1>
+    <p class="hero-sub">
+      查出口 IP、解析 DNS 记录、测网站访问耗时。<br>
+      全部在浏览器里完成，不上传任何数据到我们服务器。
+    </p>
+  </section>
+
+  <!-- 工具 1：IP 查询 -->
+  <section class="section" style="border-top:none;padding-top:20px;">
+    <div class="wrap" style="padding:0;">
+      <div class="tool-card">
+        <div class="tool-head">
+          <span class="tool-num">01</span>
+          <div>
+            <h3>我的 IP</h3>
+            <p>查看当前网络出口的 IP 地址、地理位置和运营商</p>
+          </div>
+        </div>
+        <div class="tool-body">
+          <button class="btn btn-primary" id="btnIp">查询我的 IP</button>
+          <div class="tool-result" id="ipResult" style="display:none;">
+            <div class="res-grid">
+              <div class="res-item"><span class="res-k">IP 地址</span><span class="res-v" id="rIp">—</span></div>
+              <div class="res-item"><span class="res-k">国家 / 地区</span><span class="res-v" id="rCountry">—</span></div>
+              <div class="res-item"><span class="res-k">省 / 城市</span><span class="res-v" id="rCity">—</span></div>
+              <div class="res-item"><span class="res-k">运营商</span><span class="res-v" id="rOrg">—</span></div>
+              <div class="res-item"><span class="res-k">时区</span><span class="res-v" id="rTz">—</span></div>
+              <div class="res-item"><span class="res-k">经纬度</span><span class="res-v" id="rGeo">—</span></div>
+            </div>
+            <p class="res-note">数据来源：ipip.net / ip.sb（第三方公开接口，仅供参考）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 工具 2：DNS 查询 -->
+  <section class="section section-alt" style="padding-top:44px;">
+    <div class="wrap" style="padding:0;">
+      <div class="tool-card">
+        <div class="tool-head">
+          <span class="tool-num">02</span>
+          <div>
+            <h3>DNS 解析</h3>
+            <p>查询域名的 A / AAAA / CNAME / MX / TXT / NS 记录</p>
+          </div>
+        </div>
+        <div class="tool-body">
+          <div class="tool-row">
+            <input class="tool-input" id="dnsHost" type="text" placeholder="输入域名，如 gongchuang.pages.dev" autocomplete="off">
+            <select class="tool-select" id="dnsType">
+              <option value="A">A</option>
+              <option value="AAAA">AAAA</option>
+              <option value="CNAME">CNAME</option>
+              <option value="MX">MX</option>
+              <option value="TXT">TXT</option>
+              <option value="NS">NS</option>
+            </select>
+            <button class="btn btn-primary" id="btnDns">解析</button>
+          </div>
+          <div class="tool-result" id="dnsResult" style="display:none;">
+            <table class="res-table" id="dnsTable">
+              <thead><tr><th>类型</th><th>TTL</th><th>值</th></tr></thead>
+              <tbody id="dnsBody"></tbody>
+            </table>
+            <p class="res-note" id="dnsNote">数据来源：阿里 DoH / Cloudflare DoH</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 工具 3：网站测速 -->
+  <section class="section" style="padding-top:44px;">
+    <div class="wrap" style="padding:0;">
+      <div class="tool-card">
+        <div class="tool-head">
+          <span class="tool-num">03</span>
+          <div>
+            <h3>网站访问耗时</h3>
+            <p>测 DNS 解析耗时和首字节响应（受浏览器同源策略限制，结果为近似值）</p>
+          </div>
+        </div>
+        <div class="tool-body">
+          <div class="tool-row">
+            <input class="tool-input" id="speedUrl" type="text" placeholder="输入网址，如 https://www.baidu.com" autocomplete="off">
+            <button class="btn btn-primary" id="btnSpeed">开始测速</button>
+          </div>
+          <div class="tool-result" id="speedResult" style="display:none;">
+            <div class="res-grid">
+              <div class="res-item"><span class="res-k">DNS 解析</span><span class="res-v" id="sDns">—</span></div>
+              <div class="res-item"><span class="res-k">首字节响应</span><span class="res-v" id="sTtfb">—</span></div>
+              <div class="res-item"><span class="res-k">总耗时</span><span class="res-v" id="sTotal">—</span></div>
+              <div class="res-item"><span class="res-k">HTTP 状态</span><span class="res-v" id="sStatus">—</span></div>
+            </div>
+            <p class="res-note">数据来源：浏览器 Performance API + DoH 查询。受同源策略影响，跨域站点只能测到发出请求到返回的时间，不含内容下载。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="links">
+      <a href="/">首页</a>
+      <a href="/phone">手机版</a>
+      <a href="/tv">电视版</a>
+    </div>
+    <p>共创影视 · 网络工具<br>所有查询在浏览器本地发起，不经过本站服务器</p>
+  </div>
+</footer>
+
+<style>
+.tool-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.tool-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 26px 28px 20px;
+    border-bottom: 1px solid var(--border);
+}
+.tool-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+    background: var(--primary-soft);
+    padding: 4px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+.tool-head h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 5px;
+}
+.tool-head p {
+    font-size: 13.5px;
+    color: var(--text-dim);
+    line-height: 1.65;
+}
+.tool-body { padding: 24px 28px 28px; }
+.tool-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.tool-input {
+    flex: 1;
+    min-width: 220px;
+    padding: 13px 16px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--text);
+    outline: none;
+    transition: .16s;
+    background: #fff;
+}
+.tool-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+}
+.tool-select {
+    padding: 13px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--text);
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+}
+.tool-result { margin-top: 22px; }
+.res-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.res-item {
+    background: #fff;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.res-k {
+    font-size: 12px;
+    color: var(--text-faint);
+    letter-spacing: .02em;
+}
+.res-v {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 600;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    word-break: break-all;
+}
+.res-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 14px;
+}
+.res-table th {
+    background: var(--bg-alt);
+    padding: 11px 16px;
+    text-align: left;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+}
+.res-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 13px;
+    color: var(--text-2);
+    word-break: break-all;
+}
+.res-table tr:last-child td { border-bottom: none; }
+.res-note {
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--text-faint);
+    line-height: 1.7;
+}
+.tool-err {
+    margin-top: 18px;
+    padding: 14px 18px;
+    background: #fff1f0;
+    border: 1px solid #ffccc7;
+    border-radius: 10px;
+    font-size: 13.5px;
+    color: #cf1322;
+}
+.loading { opacity: .55; pointer-events: none; }
+@media (max-width: 640px) {
+    .tool-head { padding: 20px 20px 16px; gap: 12px; }
+    .tool-body { padding: 18px 20px 22px; }
+    .tool-row { flex-direction: column; }
+    .tool-input, .tool-select { width: 100%; }
+}
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  function setText(id, v) { var e = $(id); if (e) e.textContent = v == null || v === '' ? '—' : v; }
+
+  function showErr(container, msg) {
+    var old = container.querySelector('.tool-err');
+    if (old) old.remove();
+    var d = document.createElement('div');
+    d.className = 'tool-err';
+    d.textContent = msg;
+    container.appendChild(d);
+  }
+
+  function clearErr(container) {
+    var old = container.querySelector('.tool-err');
+    if (old) old.remove();
+  }
+
+  // ---------------- 工具 1：IP 查询 ----------------
+  // 主：myip.ipip.net（中文，支持 CORS）
+  // 备：api.ip.sb（英文，字段全，支持 CORS）
+  function queryIpIpip() {
+    return fetch('https://myip.ipip.net/json', { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (d) {
+        if (d.ret !== 'ok' || !d.data) throw new Error('返回格式异常');
+        var loc = d.data.location || [];
+        return {
+          ip: d.data.ip,
+          country: loc[0] || '',
+          region: loc[1] || '',
+          city: loc[2] || '',
+          isp: loc[4] || '',
+          timezone: '',
+          geo: ''
+        };
+      });
+  }
+
+  function queryIpSb() {
+    return fetch('https://api.ip.sb/geoip', { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (d) {
+        return {
+          ip: d.ip,
+          country: d.country,
+          region: d.region,
+          city: d.city,
+          isp: d.isp || d.organization || d.asn_organization,
+          timezone: d.timezone,
+          geo: d.latitude && d.longitude ? (d.latitude + ', ' + d.longitude) : ''
+        };
+      });
+  }
+
+  $('btnIp').addEventListener('click', function () {
+    var btn = this;
+    var box = $('ipResult');
+    clearErr(box);
+    btn.classList.add('loading');
+    btn.textContent = '查询中…';
+
+    queryIpIpip()
+      .catch(function () { return queryIpSb(); })
+      .then(function (d) {
+        box.style.display = '';
+        setText('rIp', d.ip);
+        setText('rCountry', d.country);
+        setText('rCity', [d.region, d.city].filter(Boolean).join(' · '));
+        setText('rOrg', d.isp);
+        setText('rTz', d.timezone);
+        setText('rGeo', d.geo);
+      })
+      .catch(function (e) {
+        box.style.display = 'none';
+        showErr(box.parentNode, '查询失败：' + e.message + '（两个接口都不可达，请检查网络或稍后再试）');
+      })
+      .finally(function () {
+        btn.classList.remove('loading');
+        btn.textContent = '查询我的 IP';
+      });
+  });
+
+  // ---------------- 工具 2：DNS 查询 ----------------
+  function dohQuery(host, type) {
+    // 国内优先：阿里 DoH → 腾讯 DoH → Cloudflare（国内常连不上，放最后兜底）
+    var providers = [
+      { name: '阿里 DoH', url: 'https://dns.alidns.com/resolve?name=' + encodeURIComponent(host) + '&type=' + type },
+      { name: '腾讯 DoH', url: 'https://doh.pub/dns-query?name=' + encodeURIComponent(host) + '&type=' + type, json: true },
+      { name: 'Cloudflare DoH', url: 'https://cloudflare-dns.com/dns-query?name=' + encodeURIComponent(host) + '&type=' + type, json: true }
+    ];
+
+    function tryOne(i) {
+      if (i >= providers.length) return Promise.reject(new Error('所有 DNS 服务均不可用'));
+      var p = providers[i];
+      var opts = { cache: 'no-store' };
+      if (p.json) opts.headers = { 'Accept': 'application/dns-json' };
+      return fetch(p.url, opts)
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function (d) { return { data: d, provider: p.name }; })
+        .catch(function () { return tryOne(i + 1); });
+    }
+    return tryOne(0);
+  }
+
+  var TYPE_NAME = { 1: 'A', 2: 'NS', 5: 'CNAME', 6: 'SOA', 15: 'MX', 16: 'TXT', 28: 'AAAA' };
+
+  $('btnDns').addEventListener('click', function () {
+    var btn = this;
+    var host = $('dnsHost').value.trim().replace(/^https?:\/\//, '').split('/')[0];
+    var type = $('dnsType').value;
+    var box = $('dnsResult');
+    clearErr(box);
+
+    if (!host) { showErr(box, '请输入域名'); box.style.display = ''; return; }
+    if (!/^[a-zA-Z0-9.\-_]+\.[a-zA-Z]{2,}$/.test(host)) {
+      showErr(box, '域名格式不正确'); box.style.display = ''; return;
+    }
+
+    btn.classList.add('loading');
+    btn.textContent = '解析中…';
+    $('dnsBody').innerHTML = '';
+
+    dohQuery(host, type)
+      .then(function (res) {
+        var d = res.data;
+        box.style.display = '';
+        var answers = d.Answer || [];
+        var tbody = $('dnsBody');
+
+        if (!answers.length) {
+          tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:#9ca3af;padding:22px;">没有查询到 ' + type + ' 记录</td></tr>';
+        } else {
+          answers.forEach(function (a) {
+            var tr = document.createElement('tr');
+            var t = TYPE_NAME[a.type] || ('TYPE' + a.type);
+            var val = a.data;
+            if (a.type === 16 && val.length > 2) {
+              val = val.replace(/^"|"$/g, '');
+            }
+            tr.innerHTML = '<td>' + t + '</td><td>' + (a.TTL || '—') + '</td><td>' + String(val).replace(/</g, '&lt;') + '</td>';
+            tbody.appendChild(tr);
+          });
+        }
+        $('dnsNote').textContent = '数据来源：' + res.provider + '　状态码：' + (d.Status === 0 ? 'NOERROR' : d.Status);
+      })
+      .catch(function (e) {
+        box.style.display = 'none';
+        showErr(box.parentNode, '解析失败：' + e.message);
+      })
+      .finally(function () {
+        btn.classList.remove('loading');
+        btn.textContent = '解析';
+      });
+  });
+
+  // 回车也能查
+  $('dnsHost').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') $('btnDns').click();
+  });
+
+  // ---------------- 工具 3：网站测速 ----------------
+  $('btnSpeed').addEventListener('click', function () {
+    var btn = this;
+    var raw = $('speedUrl').value.trim();
+    var box = $('speedResult');
+    clearErr(box);
+
+    if (!raw) { showErr(box.parentNode, '请输入网址'); box.style.display = ''; return; }
+    var url = raw;
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+
+    var host;
+    try {
+      host = new URL(url).hostname;
+    } catch (e) {
+      showErr(box.parentNode, '网址格式不正确');
+      return;
+    }
+
+    btn.classList.add('loading');
+    btn.textContent = '测速中…';
+    box.style.display = '';
+
+    setText('sDns', '—');
+    setText('sTtfb', '—');
+    setText('sTotal', '—');
+    setText('sStatus', '—');
+
+    var t0 = performance.now();
+
+    // 第一步：DNS 耗时（用 DoH 查，近似反映解析耗时）
+    var dnsStart = performance.now();
+    dohQuery(host, 'A')
+      .then(function () { return performance.now() - dnsStart; })
+      .catch(function () { return null; })
+      .then(function (dnsMs) {
+        if (dnsMs !== null) setText('sDns', dnsMs.toFixed(0) + ' ms');
+        else setText('sDns', '查询失败');
+
+        // 第二步：HTTP 请求（no-cors，只能测时间）
+        var httpStart = performance.now();
+        return fetch(url, { mode: 'no-cors', cache: 'no-store', redirect: 'follow' })
+          .then(function () {
+            var ttfb = performance.now() - httpStart;
+            var total = performance.now() - t0;
+            setText('sTtfb', ttfb.toFixed(0) + ' ms');
+            setText('sTotal', total.toFixed(0) + ' ms');
+            setText('sStatus', '已发出（no-cors 无法读状态码）');
+          });
+      })
+      .catch(function (e) {
+        showErr(box, '测速失败：' + e.message + '（目标站点可能拒绝跨域请求）');
+        setText('sStatus', '失败');
+      })
+      .finally(function () {
+        btn.classList.remove('loading');
+        btn.textContent = '开始测速';
+      });
+  });
+
+  $('speedUrl').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') $('btnSpeed').click();
+  });
+})();
+</script>
+
+</body>
+</html>
