@@ -200,6 +200,27 @@
     </div>
   </section>
 
+  <!-- 宣传片 -->
+  <section class="section" id="promo">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="section-num">宣传片</span>
+        <h2>36 秒，先看一遍。</h2>
+        <p>手机版、电视版的真实界面，以及多线路、分类筛选、直播功能。</p>
+      </div>
+      <div class="promo-wrap">
+        <video id="promoVideo" controls preload="metadata" playsinline
+               poster="assets/icon.png" class="promo-video">
+          <source src="assets/promo.mp4" type="video/mp4">
+          你的浏览器不支持 HTML5 视频，请
+          <a href="assets/promo.mp4" download>点此下载</a>。
+        </video>
+      </div>
+      <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--text-faint);">
+        音乐：Kevin MacLeod - Carefree（CC BY 4.0）
+      </p>
+    </div>
+  </section>
   <!-- 开源与维护 -->
   <section class="section section-alt" id="opensource">
     <div class="wrap">
@@ -324,7 +345,16 @@
     </div>
   </section>
 
-</main>
+      <div class="report-box">
+        <h4>⚠ 版权投诉与内容删除</h4>
+        <p>本应用不存储、不传播任何影视文件，仅作为第三方公开接口的播放工具。应用内所有片源均来自互联网公开信息，版权归原站点所有。</p>
+        <p>如果您是版权方或内容所有者，认为本应用展示的内容侵犯了您的合法权益，请通过以下方式联系我们，我们会在 <strong>24 小时内</strong> 处理并移除相关内容或停止分发：</p>
+        <p>
+          邮箱：<a href="mailto:gongchuang666@outlook.com">gongchuang666@outlook.com</a><br>
+          备用：<a href="https://github.com/gongchuang1089" target="_blank" rel="noopener noreferrer">github.com/gongchuang1089</a>（提 Issue 或私信）
+        </p>
+        <p style="color:var(--text-faint);font-size:12.5px;">投诉时请提供：① 权利证明（著作权登记证书 / 授权文件）② 具体侵权内容的位置或截图 ③ 联系方式。我们承诺在收到有效通知后 24 小时内响应。</p>
+      </div>\n</main>
 
 <footer class="footer">
   <div class="wrap">
@@ -341,6 +371,34 @@
   </div>
 </footer>
 
+<!-- 下载免责声明弹窗 -->
+<div class="modal-mask" id="dlModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>下载前请阅读</h3>
+      <p>本应用不提供任何影视内容，仅为第三方公开接口的播放工具</p>
+    </div>
+    <div class="modal-body">
+      <ol>
+        <li><strong>应用性质</strong>：本应用是一个空壳播放器，<strong>不提供、不存储、不传播</strong>任何影视资源。所有内容均由用户自行配置的第三方接口提供，与本应用开发者无关。</li>
+        <li><strong>接口来源</strong>：应用内使用的片源接口来自互联网公开信息，版权归原站点所有。本应用不对任何第三方内容的合法性、准确性、完整性负责。</li>
+        <li><strong>使用范围</strong>：仅供个人学习、研究、技术交流使用，<strong>禁止任何商业用途</strong>。请于下载后 24 小时内自行删除。</li>
+        <li><strong>版权声明</strong>：请支持正版影视作品。如您喜欢某部作品，请通过正规渠道购买或订阅。因使用本应用产生的任何版权纠纷，由使用者自行承担。</li>
+        <li><strong>免责条款</strong>：使用本应用即表示您已理解并同意上述条款。因使用本应用造成的任何直接或间接损失，开发者不承担任何责任。</li>
+      </ol>
+    </div>
+    <div class="modal-foot">
+      <label class="modal-check">
+        <input type="checkbox" id="dlAgree">
+        <span>我已阅读并同意上述条款，仅用于个人学习研究</span>
+      </label>
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="dlCancel">取消</button>
+        <a class="btn btn-primary" id="dlConfirm" style="pointer-events:none;opacity:.42;" href="#">确认下载</a>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="lightbox" id="lightbox"><img id="lightbox-img" alt=""></div>
 <script>
 document.querySelectorAll('img[data-zoom]').forEach(function (img) {
@@ -353,6 +411,63 @@ document.querySelectorAll('img[data-zoom]').forEach(function (img) {
 document.getElementById('lightbox').addEventListener('click', function () {
   this.classList.remove('on');
 });
+</script>
+<script>
+(function () {
+  var modal = document.getElementById('dlModal');
+  if (!modal) return;
+  var agree = document.getElementById('dlAgree');
+  var confirmBtn = document.getElementById('dlConfirm');
+  var cancelBtn = document.getElementById('dlCancel');
+  var pendingUrl = '';
+
+  function openModal(url) {
+    pendingUrl = url;
+    modal.classList.add('on');
+    agree.checked = false;
+    confirmBtn.style.pointerEvents = 'none';
+    confirmBtn.style.opacity = '.42';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('on');
+    document.body.style.overflow = '';
+    pendingUrl = '';
+  }
+
+  // 拦截所有指向 .apk 的下载链接
+  document.querySelectorAll('a[href$=".apk"], a[href*=".apk?"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      openModal(a.href);
+    });
+  });
+
+  agree.addEventListener('change', function () {
+    if (agree.checked) {
+      confirmBtn.style.pointerEvents = 'auto';
+      confirmBtn.style.opacity = '1';
+    } else {
+      confirmBtn.style.pointerEvents = 'none';
+      confirmBtn.style.opacity = '.42';
+    }
+  });
+
+  confirmBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!agree.checked || !pendingUrl) return;
+    window.location.href = pendingUrl;
+    setTimeout(closeModal, 800);
+  });
+
+  cancelBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('on')) closeModal();
+  });
+})();
 </script>
 </body>
 </html>
