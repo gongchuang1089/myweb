@@ -1,4 +1,10 @@
-/phone.html    /phone   301
-/tv.html       /tv      301
-/index.html    /        301
-/tools        /tools.html   200
+# Cloudflare Pages 默认已开启 Pretty URLs：
+#   /phone  →  内部找 phone.html
+#   /tools  →  内部找 tools.html
+#   /phone.html  →  自动 301 到 /phone
+#
+# 所以不需要任何重定向规则。
+# 之前写的 /tools /tools.html 200 会和 Pretty URLs 冲突，形成无限循环，
+# 导致 ERR_TOO_MANY_REDIRECTS。
+
+# 如需把旧链接（带 .html）跳到新路径，由 Pretty URLs 自动处理，无需配置。
