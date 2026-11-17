@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f6f5f1">
+<meta name="theme-color" content="#101114">
 <title>共创影视 · 好故事，值得认真看</title>
 <meta name="description" content="从掌心到客厅，让观影回归专注。共创影视 Android 手机与电视双版本，浏览真实界面、查看版本信息并下载安装。">
 <meta property="og:title" content="共创影视 · 好故事，值得认真看">
@@ -12,8 +12,7 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="/assets/icon.png">
 <link rel="apple-touch-icon" href="/assets/icon.png">
-<link rel="stylesheet" href="/style.css?v=20261117-editorial-1">
-<link rel="stylesheet" href="/assets/editorial.css?v=20261117-1">
+<link rel="stylesheet" href="/style.css?v=20261117-cinema-1">
 </head>
 <body class="page-home">
 <a class="skip-link" href="#main">跳到主要内容</a>
@@ -21,29 +20,37 @@
 <nav class="nav" aria-label="主导航">
   <div class="nav-inner">
     <img class="nav-logo" src="/assets/icon.png" alt="共创影视" decoding="async" width="28" height="28">
-    <a class="nav-title" href="/">共创影视</a>
+    <a class="nav-title" href="/">共创影视<span class="brand-wordmark">GONGCHUANG</span></a>
     <span class="nav-spacer"></span>
-    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNavigation">菜单 <span aria-hidden="true">☰</span></button>
-    <div class="nav-links" id="mainNavigation">
-    <a class="nav-link" href="#download">下载</a>
-    <a class="nav-link" href="#features">功能</a>
-    <a class="nav-link" href="#install">安装</a>
-    <a class="nav-link" href="#changelog">更新日志</a>
-    <a class="nav-link" href="#faq">常见问题</a>
-    <a class="nav-link" href="/tools">工具</a></div>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNavigation">菜单 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+    <div class="nav-links" id="mainNavigation"><a class="nav-link active" href="/" aria-current="page">首页</a><a class="nav-link" href="/phone">手机版</a><a class="nav-link" href="/tv">电视版</a><a class="nav-link" href="/changelog">更新日志</a><a class="nav-link" href="/tools">网络工具</a><a class="nav-download" href="/#download">立即下载 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
   </div>
 </nav>
 
 <main id="main" tabindex="-1">
 
 <section class="home-hero" aria-labelledby="homeTitle">
-<div class="wrap hero-layout"><div class="hero-copy"><span class="hero-eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>GONGCHUANG / 为观影而设计</span>
-<h1 id="homeTitle">好故事，<br>值得<span class="editorial-em">认真看。</span></h1>
-<p class="home-intro">从掌心到客厅，让观影回归专注。<br>为触控与遥控器分别打磨，<br>把搜索、选集与播放，留在顺手的位置。</p>
-<div class="hero-actions"><a class="btn btn-primary btn-lg" href="#download">选择适合的版本<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="hero-watch" href="#promo"><span class="play-icon" aria-hidden="true">▷</span>看看实际体验</a></div>
-<div class="hero-caption"><span>PHONE &amp; TV</span><span class="caption-rule" aria-hidden="true"></span><span>两种屏幕，一份专注</span></div></div>
-<figure class="hero-stage"><div class="stage-topline"><span>YOUR OWN SCREEN TIME</span><span>01 / 02</span></div><div class="screen-tv"><div class="screen-bar"><span></span><span>GONGCHUANG · TV</span><span>●</span></div><img src="/assets/tv-2.jpg" alt="共创影视电视版真实首页" width="1280" height="582" fetchpriority="high" decoding="async"></div><div class="tv-pedestal" aria-hidden="true"></div><div class="screen-phone"><div class="phone-camera" aria-hidden="true"></div><img src="/assets/phone-2.jpg" alt="共创影视手机版真实搜索界面" width="720" height="1584" decoding="async"></div><figcaption><span class="stage-dot" aria-hidden="true"></span>真实应用界面<span class="stage-end">为不同屏幕，各自用心。</span></figcaption></figure></div>
-<div class="wrap hero-bottom"><span>把时间，留给喜欢的故事。</span><a href="#download">探索两个版本 <span aria-hidden="true">↓</span></a><span>ANDROID · 免费使用</span></div></section>
+  <div class="wrap hero-layout">
+    <div class="hero-copy">
+      <a class="hero-announcement" href="/changelog"><span class="status-dot" aria-hidden="true"></span>电视版兼容性更新已上线 <span aria-hidden="true">↗</span></a>
+      <span class="hero-eyebrow">MADE FOR YOUR SCREEN TIME</span>
+      <h1 id="homeTitle">好故事，<br>值得<span class="editorial-em">认真看。</span></h1>
+      <p class="home-intro">从掌心到客厅，让观影回归专注。<br>为手机与电视分别打磨，把喜欢的内容，<br class="desktop-break">留在顺手的位置。</p>
+      <div class="hero-actions"><a class="btn btn-primary btn-lg" href="#download">选择你的版本 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><a class="hero-watch" href="#promo"><span class="play-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m9 5 11 7-11 7Z"/></svg></span>看看实际体验</a></div>
+      <div class="hero-caption"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg> 免费使用</span><span>无需账号</span><span>Android 双端</span></div>
+    </div>
+    <figure class="hero-stage">
+      <div class="stage-topline"><span><span class="status-dot" aria-hidden="true"></span> YOUR NEXT SCREEN TIME</span><span>PHONE + TV</span></div>
+      <div class="stage-orbit" aria-hidden="true"></div>
+      <div class="screen-tv"><div class="screen-bar"><span></span><span>GONGCHUANG · TV</span><span>●</span></div><img src="/assets/tv-2.jpg" alt="共创影视电视版真实首页" fetchpriority="high" decoding="async"></div>
+      <div class="tv-pedestal" aria-hidden="true"></div>
+      <div class="screen-phone"><div class="phone-camera" aria-hidden="true"></div><img src="/assets/phone-2.jpg" alt="共创影视手机版真实搜索界面" decoding="async"></div>
+      <span class="stage-label stage-label-tv"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg> 为客厅而生</span>
+      <figcaption><span class="stage-dot" aria-hidden="true"></span>真实应用界面<span class="stage-end">两种屏幕，一份专注。</span></figcaption>
+    </figure>
+  </div>
+  <div class="wrap hero-bottom"><span>让每一块屏幕，都有好时光。</span><span class="hero-bottom-center">DESIGNED FOR PHONE &amp; TV</span><a href="#download">向下探索 <span aria-hidden="true">↓</span></a></div>
+</section>
 
 <section class="wrap release-strip" aria-label="最新更新">
   <span class="release-dot" aria-hidden="true"></span><div><strong>电视版 · 2026.11.17 兼容性更新</strong><p>32/64 位合一 · 修正旧系统加载路径 · 新增应用内诊断日志</p></div>
@@ -55,14 +62,14 @@
   <section class="wrap pick" id="download">
     <div class="pick-card">
       <div class="pick-card-top"><span class="device-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="8" y="3" width="16" height="26" rx="4"/><path d="M13 6h6M14 25h4"/></svg></span><span class="card-index">01 / PHONE</span></div>
-      <span class="pick-tag">Android 7.0+ · arm64</span>
+      <div class="card-preview card-preview-phone" aria-hidden="true"><img src="/assets/phone-3.jpg" alt="" loading="lazy" decoding="async"><img src="/assets/phone-2.jpg" alt="" loading="lazy" decoding="async"></div><span class="pick-tag">Android 7.0+ · arm64</span>
       <h3>随手打开，<br>进入你的片刻。</h3>
       <p>竖屏浏览与触控操作，让分类、搜索和选集<br>更贴近指尖的习惯。</p>
       <a class="card-link" href="/phone"><span>探索手机版</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="pick-card">
       <div class="pick-card-top"><span class="device-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="5" width="26" height="19" rx="3"/><path d="M16 24v4M10 28h12"/></svg></span><span class="card-index">02 / TELEVISION</span></div>
-      <span class="pick-tag">Android 4.4+ · 32/64 位合一</span>
+      <div class="card-preview card-preview-tv" aria-hidden="true"><img src="/assets/tv-2.jpg" alt="" loading="lazy" decoding="async"></div><span class="pick-tag">Android 4.4+ · 32/64 位合一</span>
       <h3>坐回沙发，<br>把故事交给大屏。</h3>
       <p>横屏布局与遥控器导航，让内容与焦点<br>在客厅的距离里，依然清楚。</p>
       <a class="card-link" href="/tv"><span>探索电视版</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -79,32 +86,32 @@
       </div>
       <div class="features">
         <div class="feat">
-          <div class="feat-num">01</div>
+          <div class="feat-num"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4M8 10.5h5m-2.5-2.5v5"/></svg></div>
           <h4>多站聚合搜索</h4>
           <p>一次输入片名，同时查询多个片源，结果显示年份和备注，减少同名混淆。</p>
         </div>
         <div class="feat">
-          <div class="feat-num">02</div>
+          <div class="feat-num"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7 14v-4l2 4v-4m4 0v4m0-2h3m0-2v4"/></svg></div>
           <h4>清晰度，自在选择</h4>
           <p>在接口提供的画质中选择适合的一档，兼顾屏幕、网络与观看习惯。</p>
         </div>
         <div class="feat">
-          <div class="feat-num">03</div>
+          <div class="feat-num"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/></svg></div>
           <h4>多线路切换</h4>
           <p>在可用线路之间切换，少一点反复查找，多一点选择的余地。</p>
         </div>
         <div class="feat">
-          <div class="feat-num">04</div>
+          <div class="feat-num"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11a9 9 0 1 1 2 7M3 4v7h7m2-4v6l4 2"/></svg></div>
           <h4>历史续播</h4>
           <p>自动记录观看进度，下次打开从上次位置继续，不用手动找集数。</p>
         </div>
         <div class="feat">
-          <div class="feat-num">05</div>
+          <div class="feat-num"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 4 16 4 16 0V6M4 12v6c0 4 16 4 16 0v-6"/></svg></div>
           <h4>三级缓存</h4>
           <p>页面、播放与搜索结果分层缓存，减少重复获取，让来回切换更从容。</p>
         </div>
         <div class="feat">
-          <div class="feat-num">06</div>
+          <div class="feat-num"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 9 5 3-5 3Z"/></svg></div>
           <h4>让界面回归内容</h4>
           <p>应用免费使用，不设付费会员。由你配置接口，把注意力留给想看的内容。</p>
         </div>
@@ -122,7 +129,7 @@
       </div>
       <div class="promo-wrap">
         <video id="promoVideo" controls preload="metadata" playsinline
-               poster="/assets/icon.png" class="promo-video">
+               poster="/assets/tv-2.jpg" class="promo-video">
           <source src="/assets/promo.mp4" type="video/mp4">
           你的浏览器不支持 HTML5 视频，请
           <a href="/assets/promo.mp4" download>点此下载</a>。
@@ -274,7 +281,7 @@
   </section>
 
       <div class="report-box">
-        <h4>⚠ 版权投诉与内容删除</h4>
+        <h4>版权投诉与内容删除</h4>
         <p>本应用不存储、不传播任何影视文件，仅作为第三方公开接口的播放工具。应用内所有片源均来自互联网公开信息，版权归原站点所有。</p>
         <p>如果您是版权方或内容所有者，认为本应用展示的内容侵犯了您的合法权益，请通过以下方式联系我们，我们会在 <strong>24 小时内</strong> 处理并移除相关内容或停止分发：</p>
         <p>
@@ -337,7 +344,7 @@
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.003 2c-4.418 0-8 3.582-8 8 0 1.106.225 2.161.632 3.123-.518 1.375-1.363 2.85-1.363 3.877 0 .32.14.607.375.807.06.052 1.485.966 3.09-.098.61.135 1.243.208 1.894.208h.001c.65 0 1.283-.073 1.893-.208 1.605 1.064 3.03.15 3.09.098.235-.2.375-.487.375-.807 0-1.027-.845-2.502-1.363-3.877.407-.962.632-2.017.632-3.123 0-4.418-3.581-8-8-8z"/></svg>
   <span>QQ 群</span>
   <span class="qq-float-num">1129432998</span>
-</a><button class="qq-float-copy" data-qq="1129432998" title="复制群号">📋</button></div>
+</a><button class="qq-float-copy" data-qq="1129432998" type="button" aria-label="复制 QQ 群号" title="复制群号"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/></svg></button></div>
 <div class="qq-toast" id="qqToast" role="status" aria-live="polite">群号已复制</div>
 <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="截图预览">
   <button class="lightbox-close" type="button" aria-label="关闭截图">关闭 <span aria-hidden="true">×</span></button>
@@ -346,6 +353,6 @@
 
 
 
-<script src="/assets/site.js?v=20261117" defer></script>
+<script src="/assets/site.js?v=20261117-cinema-1" defer></script>
 </body>
 </html>
