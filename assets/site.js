@@ -190,4 +190,29 @@
     close.addEventListener('click', closeOverlay);
     lightbox.addEventListener('click', function (event) { if (event.target === lightbox) closeOverlay(); });
   }
+
+  // Keep the glass surfaces calm at rest and choreograph their arrival on scroll.
+  var revealTargets = document.querySelectorAll('.section, .community-band, .release-strip, .download-intro, .pick-card, .feat, .step, .faq-item, .report-box, .footer');
+  each(revealTargets, function (element, index) {
+    element.classList.add('reveal');
+    element.style.transitionDelay = Math.min((index % 6) * 70, 350) + 'ms';
+  });
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries, self) {
+      each(entries, function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        self.unobserve(entry.target);
+      });
+    }, {rootMargin: '0px 0px -10% 0px', threshold: 0.08});
+    each(revealTargets, function (element) { observer.observe(element); });
+  } else {
+    each(revealTargets, function (element) { element.classList.add('is-visible'); });
+  }
+
+  each(document.querySelectorAll('details.faq-item'), function (item) {
+    item.addEventListener('toggle', function () {
+      if (item.open) item.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+    });
+  });
 })();
