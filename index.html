@@ -8,34 +8,37 @@
 <meta name="description" content="共创影视 App 官方下载。手机竖屏、电视横屏双版本，聚合多个影视站点，4K 片源，无广告完全免费。">
 <meta property="og:title" content="共创影视 · 手机版 / 电视版下载">
 <meta property="og:description" content="手机竖屏、电视横屏双版本，聚合多个影视站点，4K 片源，无广告完全免费。">
-<meta property="og:image" content="assets/icon.png">
+<meta property="og:image" content="/assets/icon.png">
 <meta property="og:type" content="website">
-<link rel="icon" href="assets/icon.png">
-<link rel="apple-touch-icon" href="assets/icon.png">
-<link rel="stylesheet" href="style.css">
+<link rel="icon" href="/assets/icon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
+<link rel="stylesheet" href="/style.css?v=20261117">
 </head>
 <body>
+<a class="skip-link" href="#main">跳到主要内容</a>
 
-<nav class="nav">
+<nav class="nav" aria-label="主导航">
   <div class="nav-inner">
-    <img class="nav-logo" src="assets/icon.png" alt="共创影视">
-    <span class="nav-title">共创影视</span>
+    <img class="nav-logo" src="/assets/icon.png" alt="共创影视" decoding="async" width="28" height="28">
+    <a class="nav-title" href="/">共创影视</a>
     <span class="nav-spacer"></span>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNavigation">菜单 <span aria-hidden="true">☰</span></button>
+    <div class="nav-links" id="mainNavigation">
     <a class="nav-link" href="#download">下载</a>
     <a class="nav-link" href="#features">功能</a>
     <a class="nav-link" href="#install">安装</a>
     <a class="nav-link" href="#changelog">更新日志</a>
     <a class="nav-link" href="#faq">常见问题</a>
-    <a class="nav-link" href="/tools">工具</a>
+    <a class="nav-link" href="/tools">工具</a></div>
   </div>
 </nav>
 
-<main>
+<main id="main" tabindex="-1">
 
   <!-- Hero -->
   <section class="wrap hero">
     <span class="hero-eyebrow">GONGCHUANG · 手机与电视</span>
-    <img class="hero-icon" src="assets/icon.png" alt="共创影视图标">
+    <img class="hero-icon" src="/assets/icon.png" alt="共创影视图标" decoding="async" width="96" height="96">
     <h1>把想看的，<br><span class="mark">放到屏幕上</span>。</h1>
     <p class="hero-sub">
       手机竖屏、电视横屏，两个版本同一个片库。<br>
@@ -46,10 +49,10 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <div class="hero-meta">
-      <span class="meta-pill"><span class="dot"></span>v3.1.0 最新版</span>
+      <span class="meta-pill"><span class="dot"></span>电视版 · 2026.11.17</span>
       <span class="meta-pill">完全免费</span>
       <span class="meta-pill">无广告</span>
-      <span class="meta-pill">Android 7.0+</span>
+      <span class="meta-pill">手机 7.0+ · 电视 4.4+</span>
     </div>
       <div class="qq-banner">
       <span class="qq-icon">🐧</span>
@@ -59,18 +62,23 @@
     </div>
 </section>
 
+<section class="wrap release-strip" aria-label="最新更新">
+  <span class="release-dot" aria-hidden="true"></span><div><strong>电视版 · 2026.11.17 兼容性更新</strong><p>32/64 位合一 · 修正旧系统加载路径 · 新增应用内诊断日志</p></div>
+  <a class="text-link" href="/changelog">查看详细日志 <span aria-hidden="true">↗</span></a>
+</section>
+
   <!-- 版本选择 -->
   <section class="wrap pick" id="download">
     <div class="pick-card">
       <div class="pick-emoji">📱</div>
-      <span class="pick-tag">竖屏 · 触控优化</span>
+      <span class="pick-tag">Android 7.0+ · arm64</span>
       <h3>手机版</h3>
       <p>为手机竖屏设计，单手滑动浏览<br>触屏点选，适合随身观看</p>
       <a class="btn btn-outline" href="/phone">查看详情与下载</a>
     </div>
     <div class="pick-card">
       <div class="pick-emoji">📺</div>
-      <span class="pick-tag">横屏 · 遥控器操作</span>
+      <span class="pick-tag">Android 4.4+ · 32/64 位合一</span>
       <h3>电视版</h3>
       <p>为大屏横屏设计，遥控器焦点导航<br>客厅观看，远距离也清晰</p>
       <a class="btn btn-outline" href="/tv">查看详情与下载</a>
@@ -131,9 +139,9 @@
       <div class="promo-wrap">
         <video id="promoVideo" controls preload="metadata" playsinline
                poster="assets/icon.png" class="promo-video">
-          <source src="assets/promo.mp4" type="video/mp4">
+          <source src="/assets/promo.mp4" type="video/mp4">
           你的浏览器不支持 HTML5 视频，请
-          <a href="assets/promo.mp4" download>点此下载</a>。
+          <a href="/assets/promo.mp4" download>点此下载</a>。
         </video>
       </div>
       <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--text-faint);">
@@ -206,31 +214,20 @@
   <section class="section section-alt" id="changelog">
     <div class="wrap">
       <div class="section-head center">
-        <span class="section-num">04 / 更新日志</span>
+        <span class="section-num">03 / 更新日志</span>
         <h2>每次更新改了什么。</h2>
         <p>持续修复、持续优化，更新不带广告、不塞推广。</p>
       </div>
       <div class="changelog">
-        <div class="cl-item">
-          <div class="cl-head"><span class="cl-ver">v3.1.1</span><span class="cl-date">2025-11</span></div>
-          <ul>
-            <li>修复 Android 6/7 电视上「JAR 加载失败」的问题</li>
-            <li>新增 32/64 位原生库自适应，一个安装包通吃手机与电视</li>
-            <li>修复部分站点点击后无数据的问题</li>
-            <li>优化播放器初始化流程，起播更稳</li>
-          </ul>
-        </div>
-        <div class="cl-item">
-          <div class="cl-head"><span class="cl-ver">v3.1.0</span><span class="cl-date">2025-11</span></div>
-          <ul>
-            <li>播放器默认改为 SurfaceView，修复动漫/高码率视频掉帧</li>
-            <li>修复 IJK ↔ Exo 播放器切换失效的问题</li>
-            <li>解除 IJK 30 帧限制，高帧率内容不再被压帧</li>
-            <li>增大播放缓冲，大分片/慢服务器播放更稳</li>
-            <li>修复界面文字模糊，按 1280dp 设计图等比缩放</li>
-            <li>编译自动签名，32/64 位安装包直接可装</li>
-          </ul>
-        </div>
+        <article class="cl-item">
+          <div class="cl-head"><span class="cl-ver">电视版兼容性与诊断</span><time class="cl-date" datetime="2026-11-17">2026-11-17</time></div>
+          <ul><li>修正 Android 4.4 等旧系统加载裸 DEX 的文件后缀，保留新系统内存加载。</li>
+          <li>修正 TLS 封装中的空套件列表与旧系统候选套件拼写。</li>
+          <li>新增“设置 → 爬虫诊断日志”，定位下载、解密、DEX 加载和初始化失败。</li>
+          <li>日志支持查看、复制、导出与分享，并过滤配置正文和敏感参数。</li></ul>
+          <p class="release-footnote">APK 内版本为 1.0.0（1），32/64 位合一。本次宿主修复不包含手机版。</p>
+          <a class="text-link" href="/changelog">查看完整变更与验证范围 →</a>
+        </article>
       </div>
     </div>
   </section>
@@ -239,7 +236,7 @@
   <section class="section" id="faq">
     <div class="wrap">
       <div class="section-head center">
-        <span class="section-num">03 / 常见问题</span>
+        <span class="section-num">04 / 常见问题</span>
         <h2>把你可能想问的，先说清楚。</h2>
       </div>
       <div class="faq">
@@ -253,8 +250,8 @@
         <details class="faq-item">
           <summary>支持哪些设备？</summary>
           <div class="faq-body">
-            Android 7.0 及以上的手机、平板、电视盒子、智能电视。
-            安装包是 arm64-v8a 架构，2018 年之后的设备基本都支持。
+            手机版适用于 Android 7.0+、arm64-v8a 设备；电视版最低 Android 4.4，包含 armeabi-v7a 与 arm64-v8a 两种 ARM 架构。
+            请按设备类型选择下载，最低系统版本不代表所有老设备均已实测。
             Apple TV、三星 Tizen、LG webOS 无法直接安装。
           </div>
         </details>
@@ -300,7 +297,8 @@
           备用：<a href="https://github.com/gongchuang1089" target="_blank" rel="noopener noreferrer">github.com/gongchuang1089</a>（提 Issue 或私信）
         </p>
         <p style="color:var(--text-faint);font-size:12.5px;">投诉时请提供：① 权利证明（著作权登记证书 / 授权文件）② 具体侵权内容的位置或截图 ③ 联系方式。我们承诺在收到有效通知后 24 小时内响应。</p>
-      </div>\n</main>
+      </div>
+</main>
 
 <footer class="footer">
   <div class="wrap">
@@ -308,7 +306,7 @@
       <a href="/phone">手机版</a>
       <a href="/tv">电视版</a>
       <a href="#features">功能</a>
-      <a href="#changelog">更新日志</a>
+      <a href="/changelog">更新日志</a>
       <a href="#faq">常见问题</a>
     </div>
     <p>
@@ -322,10 +320,10 @@
 </footer>
 
 <!-- 下载免责声明弹窗 -->
-<div class="modal-mask" id="dlModal">
+<div class="modal-mask" id="dlModal" hidden role="dialog" aria-modal="true" aria-labelledby="downloadTitle">
   <div class="modal-box">
     <div class="modal-head">
-      <h3>下载前请阅读</h3>
+      <h3 id="downloadTitle">下载前请阅读</h3>
       <p>本应用不提供任何影视内容，仅为第三方公开接口的播放工具</p>
     </div>
     <div class="modal-body">
@@ -344,7 +342,7 @@
       </label>
       <div class="modal-actions">
         <button class="btn btn-outline" id="dlCancel">取消</button>
-        <a class="btn btn-primary" id="dlConfirm" style="pointer-events:none;opacity:.42;" href="#">确认下载</a>
+        <button class="btn btn-primary" id="dlConfirm" type="button" disabled>确认下载</button>
       </div>
     </div>
   </div>
@@ -355,126 +353,14 @@
   <span>QQ 群</span>
   <span class="qq-float-num">1129432998</span>
 </a><button class="qq-float-copy" data-qq="1129432998" title="复制群号">📋</button></div>
-<div class="qq-toast" id="qqToast">群号已复制</div>
-<div class="lightbox" id="lightbox"><img id="lightbox-img" alt=""></div>
-<script>
-document.querySelectorAll('img[data-zoom]').forEach(function (img) {
-  img.addEventListener('click', function () {
-    var lb = document.getElementById('lightbox');
-    document.getElementById('lightbox-img').src = img.src;
-    lb.classList.add('on');
-  });
-});
-document.getElementById('lightbox').addEventListener('click', function () {
-  this.classList.remove('on');
-});
-</script>
-<script>
-(function () {
-  var modal = document.getElementById('dlModal');
-  if (!modal) return;
-  var agree = document.getElementById('dlAgree');
-  var confirmBtn = document.getElementById('dlConfirm');
-  var cancelBtn = document.getElementById('dlCancel');
-  var pendingUrl = '';
+<div class="qq-toast" id="qqToast" role="status" aria-live="polite">群号已复制</div>
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="截图预览">
+  <button class="lightbox-close" type="button" aria-label="关闭截图">关闭 <span aria-hidden="true">×</span></button>
+  <img id="lightbox-img" alt=""><p class="lightbox-caption"></p>
+</div>
 
-  function openModal(url) {
-    pendingUrl = url;
-    modal.classList.add('on');
-    agree.checked = false;
-    confirmBtn.style.pointerEvents = 'none';
-    confirmBtn.style.opacity = '.42';
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    modal.classList.remove('on');
-    document.body.style.overflow = '';
-    pendingUrl = '';
-  }
 
-  // 拦截所有指向 .apk 的下载链接
-  document.querySelectorAll('a[href$=".apk"], a[href*=".apk?"]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      e.preventDefault();
-      openModal(a.href);
-    });
-  });
 
-  agree.addEventListener('change', function () {
-    if (agree.checked) {
-      confirmBtn.style.pointerEvents = 'auto';
-      confirmBtn.style.opacity = '1';
-    } else {
-      confirmBtn.style.pointerEvents = 'none';
-      confirmBtn.style.opacity = '.42';
-    }
-  });
-
-  confirmBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    if (!agree.checked || !pendingUrl) return;
-    window.location.href = pendingUrl;
-    setTimeout(closeModal, 800);
-  });
-
-  cancelBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', function (e) {
-    if (e.target === modal) closeModal();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('on')) closeModal();
-  });
-})();
-</script>
-<script>
-(function () {
-  function toast(msg) {
-    var t = document.getElementById('qqToast');
-    if (!t) return;
-    t.textContent = msg;
-    t.classList.add('on');
-    clearTimeout(t._timer);
-    t._timer = setTimeout(function () { t.classList.remove('on'); }, 1800);
-  }
-
-  function copyText(text, cb) {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(function () { cb(true); }, function () { cb(false); });
-    } else {
-      var ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.cssText = 'position:fixed;left:-9999px;top:0;';
-      document.body.appendChild(ta);
-      ta.select();
-      var ok = false;
-      try { ok = document.execCommand('copy'); } catch (e) {}
-      document.body.removeChild(ta);
-      cb(ok);
-    }
-  }
-
-  document.querySelectorAll('[data-qq]').forEach(function (el) {
-    el.addEventListener('click', function () {
-      var qq = el.getAttribute('data-qq');
-      copyText(qq, function (ok) {
-        if (ok) {
-          toast('群号已复制：' + qq);
-          if (el.classList.contains('qq-copy')) {
-            var old = el.textContent;
-            el.textContent = '已复制';
-            el.classList.add('done');
-            setTimeout(function () {
-              el.textContent = old;
-              el.classList.remove('done');
-            }, 1600);
-          }
-        } else {
-          toast('群号：' + qq + '（请手动复制）');
-        }
-      });
-    });
-  });
-})();
-</script>
+<script src="/assets/site.js?v=20261117" defer></script>
 </body>
 </html>

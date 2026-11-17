@@ -4,36 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<title>共创影视 电视版下载 v3.1.0 · 大屏横屏影视播放器</title>
-<meta name="description" content="共创影视电视版 v3.1.0 官方下载，31.78 MB。横屏大屏界面，遥控器焦点导航，聚合多个影视站点，4K 片源，完全免费无广告。">
-<meta property="og:title" content="共创影视 电视版下载 v3.1.0">
+<title>共创影视电视版 · 32/64 位合一下载 · 2026.11.17</title>
+<meta name="description" content="共创影视电视版 v1.0.0 官方下载，31.79 MiB。横屏大屏界面，遥控器焦点导航，聚合多个影视站点，4K 片源，完全免费无广告。">
+<meta property="og:title" content="共创影视 电视版下载 v1.0.0">
 <meta property="og:description" content="横屏大屏界面，遥控器焦点导航，聚合多个影视站点，4K 片源，完全免费无广告。">
-<meta property="og:image" content="assets/icon.png">
-<link rel="icon" href="assets/icon.png">
-<link rel="apple-touch-icon" href="assets/icon.png">
-<link rel="stylesheet" href="style.css">
+<meta property="og:image" content="/assets/icon.png">
+<link rel="icon" href="/assets/icon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
+<link rel="stylesheet" href="/style.css?v=20261117">
 </head>
 <body>
+<a class="skip-link" href="#main">跳到主要内容</a>
 
-<nav class="nav">
+<nav class="nav" aria-label="主导航">
   <div class="nav-inner">
-    <img class="nav-logo" src="assets/icon.png" alt="共创影视">
-    <span class="nav-title">共创影视 · 电视版</span>
+    <img class="nav-logo" src="/assets/icon.png" alt="共创影视" decoding="async" width="28" height="28">
+    <a class="nav-title" href="/">共创影视 · 电视版</a>
     <span class="nav-spacer"></span>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNavigation">菜单 <span aria-hidden="true">☰</span></button>
+    <div class="nav-links" id="mainNavigation">
     <a class="nav-link" href="/tools">工具</a>
     <a class="nav-link" href="/">首页</a>
     <a class="nav-link" href="#shots">截图</a>
     <a class="nav-link" href="#info">版本</a>
-    <a class="nav-link" href="#faq">问题</a>
+    <a class="nav-link" href="/changelog">更新日志</a>
+    <a class="nav-link" href="#faq">问题</a></div>
   </div>
 </nav>
 
-<main>
+<main id="main" tabindex="-1">
 
   <!-- Hero -->
   <section class="wrap hero">
     <span class="hero-eyebrow">📺 电视版 · 横屏</span>
-    <img class="hero-icon" src="assets/icon.png" alt="共创影视图标">
+    <img class="hero-icon" src="/assets/icon.png" alt="共创影视图标" decoding="async" width="96" height="96">
     <h1>坐在沙发上，<br><span class="mark">遥控器点一点</span>。</h1>
     <p class="hero-sub">
       为大屏和遥控器重新设计：左右分栏、焦点高亮、一键换源。<br>
@@ -44,8 +48,8 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     </a>
     <div class="hero-meta">
-      <span class="meta-pill"><span class="dot"></span>v3.1.0</span>
-      <span class="meta-pill">31.78 MB</span>
+      <span class="meta-pill"><span class="dot"></span>v1.0.0</span>
+      <span class="meta-pill">31.79 MiB</span>
       <span class="meta-pill">arm64-v8a + armeabi-v7a</span>
       <span class="meta-pill">Android 4.4+</span>
     </div>
@@ -57,6 +61,16 @@
     </div>
 </section>
 
+<section class="wrap release-strip" aria-label="最新更新">
+  <span class="release-dot" aria-hidden="true"></span><div><strong>电视版 · 2026.11.17 兼容性更新</strong><p>32/64 位合一 · 修正旧系统加载路径 · 新增应用内诊断日志</p></div>
+  <a class="text-link" href="/changelog">查看详细日志 <span aria-hidden="true">↗</span></a>
+</section>
+  <section class="wrap release-panel" id="diagnostics">
+    <div class="release-panel-heading"><span class="pick-tag">新版诊断 · 无需 ADB</span><h2>哪里没加载成功，<br>这次让日志说清楚。</h2><p>配置、JAR 下载、解密、DEX 与爬虫初始化分阶段记录。遇到问题不必只拍一张“加载失败”。</p></div>
+    <ol class="diagnostic-steps"><li><strong>先复现一次问题</strong><span>记下设备型号、Android 版本和出错时间。</span></li><li><strong>设置 → 爬虫诊断日志</strong><span>点击刷新；遥控器聚焦正文后可上下滚动。</span></li><li><strong>复制、导出或分享</strong><span>把日志发给维护者。设备无保存或分享程序时可复制或截图。</span></li></ol>
+    <div class="release-panel-footer"><span>自动记录 · 跨重启保留 · 敏感内容过滤</span><a class="text-link" href="/changelog#diagnostic-guide">查看详细反馈指引 →</a></div>
+  </section>
+
   <!-- 截图 -->
   <section class="section" id="shots">
     <div class="wrap">
@@ -67,23 +81,23 @@
       </div>
       <div class="shots-tv">
         <figure>
-          <img src="assets/tv-2.jpg" alt="电视版横屏布局" data-zoom>
+          <img src="/assets/tv-2.jpg" alt="电视版横屏布局" data-zoom decoding="async" loading="lazy">
           <figcaption>横屏大屏布局 · 焦点清晰可见</figcaption>
         </figure>
         <figure>
-          <img src="assets/tv-3.jpg" alt="电视版影片列表" data-zoom>
+          <img src="/assets/tv-3.jpg" alt="电视版影片列表" data-zoom decoding="async" loading="lazy">
           <figcaption>影片列表 · 遥控器上下左右浏览</figcaption>
         </figure>
         <figure>
-          <img src="assets/tv-4.jpg" alt="电视版详情页" data-zoom>
+          <img src="/assets/tv-4.jpg" alt="电视版详情页" data-zoom decoding="async" loading="lazy">
           <figcaption>详情页 · 剧集分组，一键切换线路</figcaption>
         </figure>
         <figure>
-          <img src="assets/tv-5.jpg" alt="电视版设置页" data-zoom>
+          <img src="/assets/tv-5.jpg" alt="电视版设置页" data-zoom decoding="async" loading="lazy">
           <figcaption>设置页 · 播放器、解码方式可调</figcaption>
         </figure>
         <figure>
-          <img src="assets/tv-1.jpg" alt="电视版播放画面" data-zoom>
+          <img src="/assets/tv-1.jpg" alt="电视版播放画面" data-zoom decoding="async" loading="lazy">
           <figcaption>播放画面 · 支持选集、倍速、画面比例</figcaption>
         </figure>
       </div>
@@ -100,7 +114,7 @@
 
       <div class="split">
         <div class="split-media">
-          <img src="assets/tv-2.jpg" alt="横屏布局" data-zoom>
+          <img src="/assets/tv-2.jpg" alt="横屏布局" data-zoom decoding="async" loading="lazy">
         </div>
         <div class="split-body">
           <h3>横屏大屏布局</h3>
@@ -115,7 +129,7 @@
 
       <div class="split rev">
         <div class="split-media">
-          <img src="assets/tv-3.jpg" alt="遥控器焦点" data-zoom>
+          <img src="/assets/tv-3.jpg" alt="遥控器焦点" data-zoom decoding="async" loading="lazy">
         </div>
         <div class="split-body">
           <h3>遥控器焦点导航</h3>
@@ -130,7 +144,7 @@
 
       <div class="split">
         <div class="split-media">
-          <img src="assets/tv-4.jpg" alt="详情页换源" data-zoom>
+          <img src="/assets/tv-4.jpg" alt="详情页换源" data-zoom decoding="async" loading="lazy">
         </div>
         <div class="split-body">
           <h3>一键换源</h3>
@@ -166,7 +180,7 @@
         <div class="feat">
           <div class="feat-num">03</div>
           <h4>体积更小</h4>
-          <p>31.78 MB，arm64-v8a / armeabi-v7a 双架构，老设备也能装。</p>
+          <p>31.79 MiB，arm64-v8a / armeabi-v7a 双架构，老设备也能装。</p>
         </div>
         <div class="feat">
           <div class="feat-num">04</div>
@@ -195,14 +209,15 @@
         <h2>下载后可以用 SHA-256 校验。</h2>
       </div>
       <div class="info-table">
-        <div class="info-row"><span class="k">版本号</span><span class="v">v3.1.0（310）</span></div>
-        <div class="info-row"><span class="k">文件名称</span><span class="v">app-tv.apk</span></div>
-        <div class="info-row"><span class="k">文件大小</span><span class="v">33,324,434 字节（31.78 MB）</span></div>
+        <div class="info-row"><span class="k">更新日期</span><span class="v"><time datetime="2026-11-17">2026-11-17</time> · 兼容性与诊断更新</span></div>
+        <div class="info-row"><span class="k">版本号</span><span class="v">1.0.0（versionCode 1）</span></div>
+        <div class="info-row"><span class="k">文件名称</span><span class="v">TVBox-TV-arm64.apk</span></div>
+        <div class="info-row"><span class="k">文件大小</span><span class="v">33,339,238 字节（31.79 MiB）</span></div>
         <div class="info-row"><span class="k">架构</span><span class="v">arm64-v8a + armeabi-v7a</span></div>
         <div class="info-row"><span class="k">最低系统</span><span class="v">Android 4.4（API 19）</span></div>
         <div class="info-row"><span class="k">目标系统</span><span class="v">Android 13（API 33）</span></div>
         <div class="info-row"><span class="k">包名</span><span class="v">com.gongchuang.tv</span></div>
-        <div class="info-row"><span class="k">SHA-256</span><span class="v small">03af5c0d5dc952e21669c9603dd94141e7f26523922b58af11c114ed3f30faa0</span></div>
+        <div class="info-row checksum-row"><span class="k">SHA-256</span><div class="checksum-value"><code>7b5a7b1bd5c2418f8fdea43a12428e8146dae45445689fbd89e8039cb25d69b8</code><button class="copy-button" type="button" data-copy="7b5a7b1bd5c2418f8fdea43a12428e8146dae45445689fbd89e8039cb25d69b8">复制校验值</button></div></div>
       </div>
     </div>
   </section>
@@ -218,9 +233,9 @@
       <div class="promo-wrap">
         <video id="promoVideo" controls preload="metadata" playsinline
                poster="assets/icon.png" class="promo-video">
-          <source src="assets/promo.mp4" type="video/mp4">
+          <source src="/assets/promo.mp4" type="video/mp4">
           你的浏览器不支持 HTML5 视频，请
-          <a href="assets/promo.mp4" download>点此下载</a>。
+          <a href="/assets/promo.mp4" download>点此下载</a>。
         </video>
       </div>
       <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--text-faint);">
@@ -297,6 +312,9 @@
         <h2>电视版常见问题。</h2>
       </div>
       <div class="faq">
+        <details class="faq-item"><summary>配置拉取失败、SSL 报错或 JAR 加载失败？</summary><div class="faq-body">先确认安装本次更新，复现一次后进入“设置 → 爬虫诊断日志”，刷新并导出。日志可区分下载、解密、DEX 加载与初始化阶段。SSL 连接被重置还可能涉及网络或远端服务，不能仅凭弹窗确定原因。<a href="/changelog#diagnostic-guide">查看反馈步骤</a>。</div></details>
+        <details class="faq-item"><summary>文件名带 arm64，32 位老设备也能装吗？</summary><div class="faq-body">本次电视版已经实查包含 armeabi-v7a 与 arm64-v8a 两种 ARM 架构，最低 API 为 19。下载地址与 TVBox-TV-arm64.apk 文件名沿用旧命名，不代表只有 64 位；不支持 x86 设备。Android 4.4 为最低安装要求，不等同所有设备均已实测。</div></details>
+        <details class="faq-item"><summary>网页旧版本写 v3.1.0，安装器为何显示 1.0.0？</summary><div class="faq-body">已将本次电视版的版本号、文件大小和校验值按实际 APK 修正。APK 声明版本为 1.0.0（versionCode 1），本次更新日期为 2026-11-17；手机版的版本信息独立展示。</div></details>
         <details class="faq-item">
           <summary>电视上找不到 APK 文件？</summary>
           <div class="faq-body">
@@ -342,9 +360,9 @@
     <div class="wrap">
       <div class="dl-card">
         <h2 style="font-size:24px;font-weight:800;margin-bottom:12px;">准备好就下载吧</h2>
-        <p style="color:var(--text-dim);font-size:15px;margin-bottom:26px;">Android 电视 / 盒子 · arm64-v8a + armeabi-v7a · 31.78 MB</p>
+        <p style="color:var(--text-dim);font-size:15px;margin-bottom:26px;">Android 电视 / 盒子 · arm64-v8a + armeabi-v7a · 31.79 MiB</p>
         <a class="btn btn-primary btn-lg" href="https://gitee.com/gongchuang666/newtvbox/releases/download/1/TVBox-TV-arm64.apk">
-          下载电视版 v3.1.0
+          下载电视版 v1.0.0
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </a>
         <p class="dl-note">直链下载 · 无需跳转网盘<br>安装包签名已固定，请从本页下载以保证安全</p>
@@ -361,7 +379,8 @@
           备用：<a href="https://github.com/gongchuang1089" target="_blank" rel="noopener noreferrer">github.com/gongchuang1089</a>（提 Issue 或私信）
         </p>
         <p style="color:var(--text-faint);font-size:12.5px;">投诉时请提供：① 权利证明（著作权登记证书 / 授权文件）② 具体侵权内容的位置或截图 ③ 联系方式。我们承诺在收到有效通知后 24 小时内响应。</p>
-      </div>\n</main>
+      </div>
+</main>
 
 <footer class="footer">
   <div class="wrap">
@@ -381,10 +400,10 @@
 </footer>
 
 <!-- 下载免责声明弹窗 -->
-<div class="modal-mask" id="dlModal">
+<div class="modal-mask" id="dlModal" hidden role="dialog" aria-modal="true" aria-labelledby="downloadTitle">
   <div class="modal-box">
     <div class="modal-head">
-      <h3>下载前请阅读</h3>
+      <h3 id="downloadTitle">下载前请阅读</h3>
       <p>本应用不提供任何影视内容，仅为第三方公开接口的播放工具</p>
     </div>
     <div class="modal-body">
@@ -403,7 +422,7 @@
       </label>
       <div class="modal-actions">
         <button class="btn btn-outline" id="dlCancel">取消</button>
-        <a class="btn btn-primary" id="dlConfirm" style="pointer-events:none;opacity:.42;" href="#">确认下载</a>
+        <button class="btn btn-primary" id="dlConfirm" type="button" disabled>确认下载</button>
       </div>
     </div>
   </div>
@@ -414,126 +433,14 @@
   <span>QQ 群</span>
   <span class="qq-float-num">1129432998</span>
 </a><button class="qq-float-copy" data-qq="1129432998" title="复制群号">📋</button></div>
-<div class="qq-toast" id="qqToast">群号已复制</div>
-<div class="lightbox" id="lightbox"><img id="lightbox-img" alt=""></div>
-<script>
-document.querySelectorAll('img[data-zoom]').forEach(function (img) {
-  img.addEventListener('click', function () {
-    var lb = document.getElementById('lightbox');
-    document.getElementById('lightbox-img').src = img.src;
-    lb.classList.add('on');
-  });
-});
-document.getElementById('lightbox').addEventListener('click', function () {
-  this.classList.remove('on');
-});
-</script>
-<script>
-(function () {
-  var modal = document.getElementById('dlModal');
-  if (!modal) return;
-  var agree = document.getElementById('dlAgree');
-  var confirmBtn = document.getElementById('dlConfirm');
-  var cancelBtn = document.getElementById('dlCancel');
-  var pendingUrl = '';
+<div class="qq-toast" id="qqToast" role="status" aria-live="polite">群号已复制</div>
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="截图预览">
+  <button class="lightbox-close" type="button" aria-label="关闭截图">关闭 <span aria-hidden="true">×</span></button>
+  <img id="lightbox-img" alt=""><p class="lightbox-caption"></p>
+</div>
 
-  function openModal(url) {
-    pendingUrl = url;
-    modal.classList.add('on');
-    agree.checked = false;
-    confirmBtn.style.pointerEvents = 'none';
-    confirmBtn.style.opacity = '.42';
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    modal.classList.remove('on');
-    document.body.style.overflow = '';
-    pendingUrl = '';
-  }
 
-  // 拦截所有指向 .apk 的下载链接
-  document.querySelectorAll('a[href$=".apk"], a[href*=".apk?"]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      e.preventDefault();
-      openModal(a.href);
-    });
-  });
 
-  agree.addEventListener('change', function () {
-    if (agree.checked) {
-      confirmBtn.style.pointerEvents = 'auto';
-      confirmBtn.style.opacity = '1';
-    } else {
-      confirmBtn.style.pointerEvents = 'none';
-      confirmBtn.style.opacity = '.42';
-    }
-  });
-
-  confirmBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    if (!agree.checked || !pendingUrl) return;
-    window.location.href = pendingUrl;
-    setTimeout(closeModal, 800);
-  });
-
-  cancelBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', function (e) {
-    if (e.target === modal) closeModal();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('on')) closeModal();
-  });
-})();
-</script>
-<script>
-(function () {
-  function toast(msg) {
-    var t = document.getElementById('qqToast');
-    if (!t) return;
-    t.textContent = msg;
-    t.classList.add('on');
-    clearTimeout(t._timer);
-    t._timer = setTimeout(function () { t.classList.remove('on'); }, 1800);
-  }
-
-  function copyText(text, cb) {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(function () { cb(true); }, function () { cb(false); });
-    } else {
-      var ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.cssText = 'position:fixed;left:-9999px;top:0;';
-      document.body.appendChild(ta);
-      ta.select();
-      var ok = false;
-      try { ok = document.execCommand('copy'); } catch (e) {}
-      document.body.removeChild(ta);
-      cb(ok);
-    }
-  }
-
-  document.querySelectorAll('[data-qq]').forEach(function (el) {
-    el.addEventListener('click', function () {
-      var qq = el.getAttribute('data-qq');
-      copyText(qq, function (ok) {
-        if (ok) {
-          toast('群号已复制：' + qq);
-          if (el.classList.contains('qq-copy')) {
-            var old = el.textContent;
-            el.textContent = '已复制';
-            el.classList.add('done');
-            setTimeout(function () {
-              el.textContent = old;
-              el.classList.remove('done');
-            }, 1600);
-          }
-        } else {
-          toast('群号：' + qq + '（请手动复制）');
-        }
-      });
-    });
-  });
-})();
-</script>
+<script src="/assets/site.js?v=20261117" defer></script>
 </body>
 </html>

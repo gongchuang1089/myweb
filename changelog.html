@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>更新日志与故障反馈 · 共创影视</title>
+<meta name="description" content="2026-11-17 电视版兼容性与爬虫诊断更新，含详细变更、真实包信息和反馈指引。">
+<meta property="og:title" content="更新日志与故障反馈 · 共创影视">
+<meta property="og:description" content="2026-11-17 电视版兼容性与爬虫诊断更新，含详细变更、真实包信息和反馈指引。">
+<meta property="og:image" content="/assets/icon.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/icon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
+<link rel="stylesheet" href="/style.css?v=20261117">
+</head><body>
+<a class="skip-link" href="#main">跳到主要内容</a><nav class="nav" aria-label="主导航"><div class="nav-inner"><img class="nav-logo" src="/assets/icon.png" alt="共创影视" decoding="async" width="28" height="28"><a class="nav-title" href="/">共创影视</a><span class="nav-spacer"></span>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNavigation">菜单 <span aria-hidden="true">☰</span></button>
+    <div class="nav-links" id="mainNavigation">
+<a class="nav-link" href="/">首页</a><a class="nav-link" href="/tv">电视版</a><a class="nav-link" href="/phone">手机版</a><a class="nav-link" href="/changelog">更新日志</a><a class="nav-link" href="/tools">工具</a></div>
+  </div>
+</nav><main id="main" tabindex="-1">
+  <section class="wrap hero changelog-hero"><span class="hero-eyebrow">RELEASE NOTES / 更新日志</span><h1>每一步改进，<br><span class="mark">都有迹可循</span>。</h1><p class="hero-sub">电视版兼容性与诊断更新已发布。<br>下载链接不变，改了什么、验证到哪里，都写清楚。</p>
+  <div class="hero-meta"><span class="meta-pill"><span class="dot"></span>2026.11.17 · 已发布</span><span class="meta-pill">Android 4.4+</span><span class="meta-pill">32 / 64 位合一</span></div>
+  <div class="release-actions"><a class="btn btn-primary" href="/tv#download">下载电视版</a><a class="btn btn-outline" href="/CHANGELOG.md" download>下载完整文字日志</a><button class="copy-button" type="button" data-copy-target="release-text">复制详细日志</button></div></section>
+  <section class="wrap release-panel" id="diagnostic-guide"><div class="release-panel-heading"><span class="pick-tag">遇到问题？按这三步反馈</span><h2>让一次反馈，<br>带上足够的线索。</h2></div><ol class="diagnostic-steps"><li><strong>复现一次并记下时间</strong><span>说明配置拉取失败、JAR 加载失败还是个别站点打不开。</span></li><li><strong>设置 → 爬虫诊断日志</strong><span>启动失败时先取消提示再进设置，点击刷新，复制、导出或分享日志。</span></li><li><strong>补充设备与复现步骤</strong><span>发送给维护者；无保存或分享应用时可复制正文或截图。</span></li></ol><div class="feedback-box"><pre id="feedback-template">设备型号：
+Android 版本：
+应用版本 / 更新日期：
+发生时间：
+影响范围（所有 / 个别站点）：
+复现步骤：
+诊断日志（另附）：</pre><button class="copy-button" type="button" data-copy-target="feedback-template">复制反馈模板</button><p>请勿额外附上接口密钥、账号、Cookie 或完整私有配置。群号：<a href="https://qm.qq.com/q/2h6XqxaWzi" target="_blank" rel="noopener noreferrer">1129432998</a></p></div></section>
+  <section class="wrap release-document"><article class="release-text" id="release-text"><h2>2026-11-17 · 电视版兼容性与爬虫诊断更新</h2>
+<h3>发布包信息</h3>
+<ul>
+<li>电视版，32 位与 64 位合一；下载地址保持不变。</li>
+<li>APK 内版本：1.0.0；versionCode：1；包名：com.gongchuang.tv。</li>
+<li>最低系统：Android 4.4 / API 19；目标系统：Android 13 / API 33。</li>
+<li>支持架构：armeabi-v7a、arm64-v8a。</li>
+<li>文件大小：33,339,238 字节（31.79 MiB）。</li>
+<li>线上文件名沿用 TVBox-TV-arm64.apk，这是历史文件名，不表示仅支持 64 位。</li>
+<li>SHA-256：7b5a7b1bd5c2418f8fdea43a12428e8146dae45445689fbd89e8039cb25d69b8。</li>
+<li>网页旧版本标注与 APK 声明不一致，本次电视版信息以实际发布 APK 为准；手机版不在本次宿主修复范围内。</li>
+</ul>
+<h3>一、旧系统 JAR / DEX 加载</h3>
+<ol>
+<li>修正 Android 8.0 以下的加密 JAR 加载路径：解密、提取出的裸 DEX 使用 .dex 后缀落盘，不再写成 .jar，避免旧 Dalvik 按 ZIP/JAR 格式读取裸 DEX。</li>
+<li>Android 8.0 及以上继续使用 InMemoryDexClassLoader，保持内存加载路径。</li>
+<li>将 API 26 的内存加载器引用隔离到独立辅助类，减少旧系统验证主加载类时触及高版本类型的风险。</li>
+<li>解密 ZIP 与 DEX 字节数组在 finally 中清零，异常路径也执行清理；加载失败时删除本次未成功使用的临时 DEX。</li>
+<li>普通第三方 JAR 继续沿用原有 DexClassLoader 路径；缺少可选 Init 类时保留兼容性容错，不将所有插件强制要求为同一种初始化结构。</li>
+<li>保留原有受保护插件绑定规则、父加载器优先机制、CSJ1 加密格式及接口，不修改密钥或要求用户重新配置接口。</li>
+</ol>
+<h3>二、HTTPS / TLS 兼容修正</h3>
+<ol>
+<li>修复新系统上 getDefaultCipherSuites / getSupportedCipherSuites 可能返回 null 的问题。</li>
+<li>按实际创建的 SSL Socket 所支持的协议和套件配置协商，不再复用另一提供者静态探测的结果。</li>
+<li>旧系统启用自身支持的 TLS 协议；新系统保留默认启用的 TLS 协议，不一刀切强制为 TLS 1.2。</li>
+<li>修正旧系统候选套件名称中 ECDHE 的拼写，按受支持列表取交集，并保留原有已启用套件。</li>
+<li>补齐无参数 createSocket 路径，TLS 上下文初始化失败时保留原始异常原因。</li>
+<li>不自动降级为 HTTP，不新增放宽证书校验的逻辑。握手被远端重置仍可能涉及网络、服务端或设备系统，需要结合日志判断。</li>
+</ol>
+<h3>三、应用内爬虫诊断日志</h3>
+<p>入口：设置 → 爬虫诊断日志。自动记录，无需打开原有隐藏调试开关。</p>
+<p>记录的阶段包括：</p>
+<ul>
+<li>配置加载：优先缓存、网络获取、HTTP 状态、最终地址的域名、协商成功后的 TLS 版本与加密套件、配置解码、解析失败和缓存回退。</li>
+<li>主 JAR 下载：请求开始、图片封装提取、HTTP 状态、落盘字节数、耗时、下载错误、缓存命中、回退与重试次数。</li>
+<li>JAR 加载：加密格式识别、解密、classes.dex 提取、DEX 版本和字节数、磁盘或内存加载路径。</li>
+<li>插件初始化：Init 类解析、普通插件可选初始化、受保护插件绑定结果。</li>
+<li>具体爬虫：目标类名、类实例化、initApi、init(context, ext) 分阶段结果与总耗时。</li>
+<li>独立站点 JAR：单独下载的 HTTP 状态、文件字节数及耗时。</li>
+<li>异常诊断：异常类型、有限层数的 cause 链与堆栈位置；消息中的已知网络错误以固定分类显示。</li>
+</ul>
+<p>使用方式：</p>
+<ol>
+<li>安装本次电视版，复现一次配置拉取失败、JAR 加载失败或站点打不开。</li>
+<li>如果启动时显示失败对话框，先取消提示并进入设置。</li>
+<li>打开“爬虫诊断日志”，点击“刷新”。遥控器移到正文后可上下滚动。</li>
+<li>使用“复制”“导出”或“分享”；导出依赖设备可用的系统文件保存程序，分享依赖设备已安装的分享目标。</li>
+<li>反馈时补充设备型号、Android 版本、发生时间、重现步骤，说明是所有站点还是个别站点失败。</li>
+</ol>
+<p>隐私与开销：</p>
+<ul>
+<li>不记录配置正文、Cookie、Authorization、密钥、爬虫 ext 内容；URL 隐去用户信息、路径、查询参数与 fragment。</li>
+<li>不原样保存异常 message，避免第三方异常携带敏感数据；保留类型、cause 链、代码位置和固定错误分类。</li>
+<li>后台串行写入，任务队列有上限；队列满时记录丢弃计数，不无限积压。</li>
+<li>私有目录持久保存，重启后仍可读取；当前日志和上一份日志各上限 256 KiB，并限制单条记录长度。</li>
+<li>支持清空日志；写入、读取、导出失败会显示具体错误类型。</li>
+</ul>
+<h3>四、验证范围</h3>
+<ul>
+<li>使用项目自带 Gradle Wrapper，任务为 :app:assembleJavaRelease，发布版构建通过。</li>
+<li>APK 中实查同时包含 armeabi-v7a、arm64-v8a；最低 API 为 19。</li>
+<li>v1 与 v2 签名验证通过；本地主机测试 393 项断言和独立进程的日志持久化测试通过。</li>
+<li>主机测试覆盖 TLS 返回值、旧新加载分支、缓冲清理、可选 Init 容错、日志脱敏、并发、轮转及清空；Android / Dalvik 边界使用替身，不等同实机验证。</li>
+<li>目前未在报错的极米投影仪及 Android 4.4 设备上实测，不能把构建成功当作设备问题已全部消失。</li>
+</ul>
+<h2>2026-11-16～17 · 独立爬虫项目性能源码优化</h2>
+<p>以下属于 CatVodSpider 的独立源码更新，与宿主 APK 分开发布。网页和宿主 APK 更新不代表远端爬虫包已同步替换。</p>
+<ol>
+<li>HTTP 多 IP 请求保持现有竞争方式；选出可用响应后关闭输家 Socket，并取消对应任务；调用者中断时释放该批连接。</li>
+<li>聚合搜索保留原有每批并发、3 源快速搜索、13 源完整搜索 / 详情与时间预算，使用完成队列代替每 60 ms 扫描；详情线路仍按原配置顺序排列。</li>
+<li>缓存达到容量时逐项淘汰最久未访问项，不再整表清空；每项保留独立 TTL，并保留线程安全。</li>
+<li>网络请求不在缓存锁内执行；部分站点缓存原始 JSON，读取后生成独立对象，避免并发修改同一 JSON。</li>
+<li>保持站点列表、接口协议、清晰度选择、播放器参数与加密格式不变。</li>
+<li>三组本地回归测试通过。五轮即时响应夹具中的收集开销中位数从 62.463 ms 降至 3.216 ms；这只是本地调度开销，不是外网站点测速，也不代表首播时间。</li>
+<li>不宣称聚合搜索中的所有 HttpURLConnection 都能在取消后立即断开；没有改为共享固定搜索池，避免慢连接占住后续批次。</li>
+</ol>
+<h2>历史记录</h2>
+<p>网站原有 v3.1.0 / v3.1.1 记录仍可在更新页面折叠区查看。原页面使用的 2025-11 日期未经核对，不作为本次发布日期；本次发布日期为 2026-11-17。</p></article><details class="history-block"><summary>查看原网站历史记录</summary><p class="version-note">下列内容按原网站保留，原 2025-11 日期未经核对；不代表本次电视版的版本号或发布日期。</p><div class="changelog">
+        <div class="cl-item">
+          <div class="cl-head"><span class="cl-ver">v3.1.1</span><span class="cl-date">2025-11</span></div>
+          <ul>
+            <li>修复 Android 6/7 电视上「JAR 加载失败」的问题</li>
+            <li>新增 32/64 位原生库自适应，一个安装包通吃手机与电视</li>
+            <li>修复部分站点点击后无数据的问题</li>
+            <li>优化播放器初始化流程，起播更稳</li>
+          </ul>
+        </div>
+        <div class="cl-item">
+          <div class="cl-head"><span class="cl-ver">v3.1.0</span><span class="cl-date">2025-11</span></div>
+          <ul>
+            <li>播放器默认改为 SurfaceView，修复动漫/高码率视频掉帧</li>
+            <li>修复 IJK ↔ Exo 播放器切换失效的问题</li>
+            <li>解除 IJK 30 帧限制，高帧率内容不再被压帧</li>
+            <li>增大播放缓冲，大分片/慢服务器播放更稳</li>
+            <li>修复界面文字模糊，按 1280dp 设计图等比缩放</li>
+            <li>编译自动签名，32/64 位安装包直接可装</li>
+          </ul>
+        </div></div></details></section>
+</main><footer class="footer">
+  <div class="wrap">
+    <div class="links">
+      <a href="/phone">手机版</a>
+      <a href="/tv">电视版</a>
+      <a href="/#features">功能</a>
+      <a href="/changelog">更新日志</a>
+      <a href="/#faq">常见问题</a>
+    </div>
+    <p>
+      共创影视 · 仅供个人学习研究使用<br>
+      应用不提供、不存储、不传播任何影视内容，所有资源均来自第三方公开接口<br>
+      请于下载后 24 小时内删除，支持正版
+    </p>
+      <p class="footer-qq">
+        🐧 官方交流群：<strong>1129432998</strong>
+      </p>  </div>
+</footer><script src="/assets/site.js?v=20261117" defer></script>
+</body></html>

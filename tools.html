@@ -6,31 +6,34 @@
 <meta name="theme-color" content="#ffffff">
 <title>网络工具 · IP 查询 / DNS 解析 / 网站测速</title>
 <meta name="description" content="在线网络工具：查询本机出口 IP 与归属地、DNS 记录解析、网站访问耗时测试。">
-<link rel="icon" href="assets/icon.png">
-<link rel="apple-touch-icon" href="assets/icon.png">
-<link rel="stylesheet" href="style.css">
+<link rel="icon" href="/assets/icon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
+<link rel="stylesheet" href="/style.css?v=20261117">
 </head>
 <body>
+<a class="skip-link" href="#main">跳到主要内容</a>
 
-<nav class="nav">
+<nav class="nav" aria-label="主导航">
   <div class="nav-inner">
-    <img class="nav-logo" src="assets/icon.png" alt="共创影视">
-    <span class="nav-title">共创影视 · 网络工具</span>
+    <img class="nav-logo" src="/assets/icon.png" alt="共创影视" decoding="async" width="28" height="28">
+    <a class="nav-title" href="/">共创影视 · 网络工具</a>
     <span class="nav-spacer"></span>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNavigation">菜单 <span aria-hidden="true">☰</span></button>
+    <div class="nav-links" id="mainNavigation">
     <a class="nav-link" href="/">首页</a>
     <a class="nav-link" href="/phone">手机版</a>
-    <a class="nav-link" href="/tv">电视版</a>
+    <a class="nav-link" href="/tv">电视版</a></div>
   </div>
 </nav>
 
-<main class="wrap">
+<main class="wrap" id="main" tabindex="-1">
 
   <section class="hero" style="padding:56px 0 36px;">
     <span class="hero-eyebrow">NETWORK TOOLS</span>
     <h1>网络小工具</h1>
     <p class="hero-sub">
       查出口 IP、解析 DNS 记录、测网站访问耗时。<br>
-      全部在浏览器里完成，不上传任何数据到我们服务器。
+      由浏览器直接请求第三方服务，不经过本站服务器。查询域名与出口 IP 会发送给所选服务。
     </p>
   </section>
 
@@ -47,7 +50,7 @@
         </div>
         <div class="tool-body">
           <button class="btn btn-primary" id="btnIp">查询我的 IP</button>
-          <div class="tool-result" id="ipResult" style="display:none;">
+          <div class="tool-result" aria-live="polite" id="ipResult" style="display:none;">
             <div class="res-grid">
               <div class="res-item"><span class="res-k">IP 地址</span><span class="res-v" id="rIp">—</span></div>
               <div class="res-item"><span class="res-k">国家 / 地区</span><span class="res-v" id="rCountry">—</span></div>
@@ -56,7 +59,7 @@
               <div class="res-item"><span class="res-k">时区</span><span class="res-v" id="rTz">—</span></div>
               <div class="res-item"><span class="res-k">经纬度</span><span class="res-v" id="rGeo">—</span></div>
             </div>
-            <p class="res-note">数据来源：ipip.net / ip.sb（第三方公开接口，仅供参考）</p>
+            <p class="res-note" id="ipNote">数据来源：ipip.net / ip.sb（第三方公开接口，仅供参考）</p>
           </div>
         </div>
       </div>
@@ -76,8 +79,8 @@
         </div>
         <div class="tool-body">
           <div class="tool-row">
-            <input class="tool-input" id="dnsHost" type="text" placeholder="输入域名，如 gongchuang.pages.dev" autocomplete="off">
-            <select class="tool-select" id="dnsType">
+            <input class="tool-input" id="dnsHost" aria-label="要查询的域名" type="text" placeholder="输入域名，如 gongchuang.pages.dev" autocomplete="off">
+            <select class="tool-select" id="dnsType" aria-label="DNS 记录类型">
               <option value="A">A</option>
               <option value="AAAA">AAAA</option>
               <option value="CNAME">CNAME</option>
@@ -87,7 +90,7 @@
             </select>
             <button class="btn btn-primary" id="btnDns">解析</button>
           </div>
-          <div class="tool-result" id="dnsResult" style="display:none;">
+          <div class="tool-result" aria-live="polite" id="dnsResult" style="display:none;">
             <table class="res-table" id="dnsTable">
               <thead><tr><th>类型</th><th>TTL</th><th>值</th></tr></thead>
               <tbody id="dnsBody"></tbody>
@@ -107,22 +110,22 @@
           <span class="tool-num">03</span>
           <div>
             <h3>网站访问耗时</h3>
-            <p>测 DNS 解析耗时和首字节响应（受浏览器同源策略限制，结果为近似值）</p>
+            <p>记录 DoH 查询与浏览器可见的请求耗时，不将其冒充真实 DNS 或首字节时间。</p>
           </div>
         </div>
         <div class="tool-body">
           <div class="tool-row">
-            <input class="tool-input" id="speedUrl" type="text" placeholder="输入网址，如 https://www.baidu.com" autocomplete="off">
-            <button class="btn btn-primary" id="btnSpeed">开始测速</button>
+            <input class="tool-input" id="speedUrl" aria-label="要测试的网址" type="text" placeholder="输入网址，如 https://www.baidu.com" autocomplete="off">
+            <button class="btn btn-primary" id="btnSpeed">开始测试</button>
           </div>
-          <div class="tool-result" id="speedResult" style="display:none;">
+          <div class="tool-result" aria-live="polite" id="speedResult" style="display:none;">
             <div class="res-grid">
-              <div class="res-item"><span class="res-k">DNS 解析</span><span class="res-v" id="sDns">—</span></div>
-              <div class="res-item"><span class="res-k">首字节响应</span><span class="res-v" id="sTtfb">—</span></div>
-              <div class="res-item"><span class="res-k">总耗时</span><span class="res-v" id="sTotal">—</span></div>
+              <div class="res-item"><span class="res-k">DoH 查询耗时</span><span class="res-v" id="sDns">—</span></div>
+              <div class="res-item"><span class="res-k">请求响应可见耗时</span><span class="res-v" id="sTtfb">—</span></div>
+              <div class="res-item"><span class="res-k">本次操作总耗时</span><span class="res-v" id="sTotal">—</span></div>
               <div class="res-item"><span class="res-k">HTTP 状态</span><span class="res-v" id="sStatus">—</span></div>
             </div>
-            <p class="res-note">数据来源：浏览器 Performance API + DoH 查询。受同源策略影响，跨域站点只能测到发出请求到返回的时间，不含内容下载。</p>
+            <p class="res-note">DoH 耗时包含到第三方解析服务的网络开销，不是系统 DNS 耗时。请求计时不是 TTFB、带宽或完整下载测速；跨域不透明响应可能隐藏错误状态，不能据此判断目标站点正常。</p>
           </div>
         </div>
       </div>
@@ -290,236 +293,9 @@
 }
 </style>
 
-<script>
-(function () {
-  'use strict';
 
-  var $ = function (id) { return document.getElementById(id); };
 
-  function setText(id, v) { var e = $(id); if (e) e.textContent = v == null || v === '' ? '—' : v; }
-
-  function showErr(container, msg) {
-    var old = container.querySelector('.tool-err');
-    if (old) old.remove();
-    var d = document.createElement('div');
-    d.className = 'tool-err';
-    d.textContent = msg;
-    container.appendChild(d);
-  }
-
-  function clearErr(container) {
-    var old = container.querySelector('.tool-err');
-    if (old) old.remove();
-  }
-
-  // ---------------- 工具 1：IP 查询 ----------------
-  // 主：myip.ipip.net（中文，支持 CORS）
-  // 备：api.ip.sb（英文，字段全，支持 CORS）
-  function queryIpIpip() {
-    return fetch('https://myip.ipip.net/json', { cache: 'no-store' })
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function (d) {
-        if (d.ret !== 'ok' || !d.data) throw new Error('返回格式异常');
-        var loc = d.data.location || [];
-        return {
-          ip: d.data.ip,
-          country: loc[0] || '',
-          region: loc[1] || '',
-          city: loc[2] || '',
-          isp: loc[4] || '',
-          timezone: '',
-          geo: ''
-        };
-      });
-  }
-
-  function queryIpSb() {
-    return fetch('https://api.ip.sb/geoip', { cache: 'no-store' })
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function (d) {
-        return {
-          ip: d.ip,
-          country: d.country,
-          region: d.region,
-          city: d.city,
-          isp: d.isp || d.organization || d.asn_organization,
-          timezone: d.timezone,
-          geo: d.latitude && d.longitude ? (d.latitude + ', ' + d.longitude) : ''
-        };
-      });
-  }
-
-  $('btnIp').addEventListener('click', function () {
-    var btn = this;
-    var box = $('ipResult');
-    clearErr(box);
-    btn.classList.add('loading');
-    btn.textContent = '查询中…';
-
-    queryIpIpip()
-      .catch(function () { return queryIpSb(); })
-      .then(function (d) {
-        box.style.display = '';
-        setText('rIp', d.ip);
-        setText('rCountry', d.country);
-        setText('rCity', [d.region, d.city].filter(Boolean).join(' · '));
-        setText('rOrg', d.isp);
-        setText('rTz', d.timezone);
-        setText('rGeo', d.geo);
-      })
-      .catch(function (e) {
-        box.style.display = 'none';
-        showErr(box.parentNode, '查询失败：' + e.message + '（两个接口都不可达，请检查网络或稍后再试）');
-      })
-      .finally(function () {
-        btn.classList.remove('loading');
-        btn.textContent = '查询我的 IP';
-      });
-  });
-
-  // ---------------- 工具 2：DNS 查询 ----------------
-  function dohQuery(host, type) {
-    // 国内优先：阿里 DoH → 腾讯 DoH → Cloudflare（国内常连不上，放最后兜底）
-    var providers = [
-      { name: '阿里 DoH', url: 'https://dns.alidns.com/resolve?name=' + encodeURIComponent(host) + '&type=' + type },
-      { name: '腾讯 DoH', url: 'https://doh.pub/dns-query?name=' + encodeURIComponent(host) + '&type=' + type, json: true },
-      { name: 'Cloudflare DoH', url: 'https://cloudflare-dns.com/dns-query?name=' + encodeURIComponent(host) + '&type=' + type, json: true }
-    ];
-
-    function tryOne(i) {
-      if (i >= providers.length) return Promise.reject(new Error('所有 DNS 服务均不可用'));
-      var p = providers[i];
-      var opts = { cache: 'no-store' };
-      if (p.json) opts.headers = { 'Accept': 'application/dns-json' };
-      return fetch(p.url, opts)
-        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-        .then(function (d) { return { data: d, provider: p.name }; })
-        .catch(function () { return tryOne(i + 1); });
-    }
-    return tryOne(0);
-  }
-
-  var TYPE_NAME = { 1: 'A', 2: 'NS', 5: 'CNAME', 6: 'SOA', 15: 'MX', 16: 'TXT', 28: 'AAAA' };
-
-  $('btnDns').addEventListener('click', function () {
-    var btn = this;
-    var host = $('dnsHost').value.trim().replace(/^https?:\/\//, '').split('/')[0];
-    var type = $('dnsType').value;
-    var box = $('dnsResult');
-    clearErr(box);
-
-    if (!host) { showErr(box, '请输入域名'); box.style.display = ''; return; }
-    if (!/^[a-zA-Z0-9.\-_]+\.[a-zA-Z]{2,}$/.test(host)) {
-      showErr(box, '域名格式不正确'); box.style.display = ''; return;
-    }
-
-    btn.classList.add('loading');
-    btn.textContent = '解析中…';
-    $('dnsBody').innerHTML = '';
-
-    dohQuery(host, type)
-      .then(function (res) {
-        var d = res.data;
-        box.style.display = '';
-        var answers = d.Answer || [];
-        var tbody = $('dnsBody');
-
-        if (!answers.length) {
-          tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:#9ca3af;padding:22px;">没有查询到 ' + type + ' 记录</td></tr>';
-        } else {
-          answers.forEach(function (a) {
-            var tr = document.createElement('tr');
-            var t = TYPE_NAME[a.type] || ('TYPE' + a.type);
-            var val = a.data;
-            if (a.type === 16 && val.length > 2) {
-              val = val.replace(/^"|"$/g, '');
-            }
-            tr.innerHTML = '<td>' + t + '</td><td>' + (a.TTL || '—') + '</td><td>' + String(val).replace(/</g, '&lt;') + '</td>';
-            tbody.appendChild(tr);
-          });
-        }
-        $('dnsNote').textContent = '数据来源：' + res.provider + '　状态码：' + (d.Status === 0 ? 'NOERROR' : d.Status);
-      })
-      .catch(function (e) {
-        box.style.display = 'none';
-        showErr(box.parentNode, '解析失败：' + e.message);
-      })
-      .finally(function () {
-        btn.classList.remove('loading');
-        btn.textContent = '解析';
-      });
-  });
-
-  // 回车也能查
-  $('dnsHost').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') $('btnDns').click();
-  });
-
-  // ---------------- 工具 3：网站测速 ----------------
-  $('btnSpeed').addEventListener('click', function () {
-    var btn = this;
-    var raw = $('speedUrl').value.trim();
-    var box = $('speedResult');
-    clearErr(box);
-
-    if (!raw) { showErr(box.parentNode, '请输入网址'); box.style.display = ''; return; }
-    var url = raw;
-    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
-
-    var host;
-    try {
-      host = new URL(url).hostname;
-    } catch (e) {
-      showErr(box.parentNode, '网址格式不正确');
-      return;
-    }
-
-    btn.classList.add('loading');
-    btn.textContent = '测速中…';
-    box.style.display = '';
-
-    setText('sDns', '—');
-    setText('sTtfb', '—');
-    setText('sTotal', '—');
-    setText('sStatus', '—');
-
-    var t0 = performance.now();
-
-    // 第一步：DNS 耗时（用 DoH 查，近似反映解析耗时）
-    var dnsStart = performance.now();
-    dohQuery(host, 'A')
-      .then(function () { return performance.now() - dnsStart; })
-      .catch(function () { return null; })
-      .then(function (dnsMs) {
-        if (dnsMs !== null) setText('sDns', dnsMs.toFixed(0) + ' ms');
-        else setText('sDns', '查询失败');
-
-        // 第二步：HTTP 请求（no-cors，只能测时间）
-        var httpStart = performance.now();
-        return fetch(url, { mode: 'no-cors', cache: 'no-store', redirect: 'follow' })
-          .then(function () {
-            var ttfb = performance.now() - httpStart;
-            var total = performance.now() - t0;
-            setText('sTtfb', ttfb.toFixed(0) + ' ms');
-            setText('sTotal', total.toFixed(0) + ' ms');
-            setText('sStatus', '已发出（no-cors 无法读状态码）');
-          });
-      })
-      .catch(function (e) {
-        showErr(box, '测速失败：' + e.message + '（目标站点可能拒绝跨域请求）');
-        setText('sStatus', '失败');
-      })
-      .finally(function () {
-        btn.classList.remove('loading');
-        btn.textContent = '开始测速';
-      });
-  });
-
-  $('speedUrl').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') $('btnSpeed').click();
-  });
-})();
-</script>
-
+<script src="/assets/site.js?v=20261117" defer></script>
+<script src="/assets/tools.js?v=20261117" defer></script>
 </body>
 </html>
